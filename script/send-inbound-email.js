@@ -13,8 +13,8 @@ var transport = nodemailer.createTransport({
 });
 
 transport.sendMail({
-	from: 'from@localhost.local',
-	to: 'recipient@localhost.local',
+	from: 'Sender Name <from@localhost.local>',
+	to: 'Recipient Name <recipient@localhost.local>',
 	subject: 'my subject',
 	text: 'my email body',
 	html: '<b>my email body</b>'

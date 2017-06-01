@@ -6,9 +6,12 @@
 		"npm": "5.0.0"
 	},
 	"dependencies": {
+		"async": "^2.4.1",
 		"express": "^4.15.3",
+		"knex": "^0.13.0",
 		"lodash": "^4.17.4",
 		"mailparser": "^2.0.5",
+		"pg": "^6.2.3",
 		"smtp-server": "^3.0.1"
 	},
 	"devDependencies": {

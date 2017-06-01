@@ -1,22 +1,59 @@
 const _ = require('lodash');
+var emailDb = require('./db/email');
 const SMTPServer = require('smtp-server').SMTPServer;
 const simpleParser = require('mailparser').simpleParser;
 
-var server = new SMTPServer({
+/**
+ * Create server instance
+ */
+module.exports = new SMTPServer({
+	onData: onData,
 	name: 'temp-mail',
 	hideSTARTTLS: true,
-	authOptional: true,
-	onData(stream, session, callback) {
-		simpleParser(stream, function (err, mail) {
-			if (err) return callback(err);
-			console.log('--- NEW MAIL ---');
-			console.log('From:', _.map(mail.from.value, 'address').join(', '));
-			console.log('To:', _.map(mail.to.value, 'address').join(', '));
-			console.log('Subject:', mail.subject);
-			console.log('Body', mail.html || mail.text);
-			callback();
-		});
-	}
+	authOptional: true
 });
 
-module.exports = server;
+/**
+ * On Data
+ * 
+ * Event handler when email data is received.
+ * 
+ * @param {Object} stream 
+ * @param {Object} session 
+ * @param {Function} callback 
+ */
+function onData (stream, session, callback) {
+	simpleParser(stream, function (err, mail) {
+		if (err) return callback(err);
+		insertMail(mail, function (err, result) {
+			if (err) {
+				console.log('Failed to insert email', err);
+			} else {
+				console.log('--- NEW MAIL ---', JSON.stringify(result, null, 2));
+			}
+			callback();
+		});
+	});
+}
+
+/**
+ * Insert Mail
+ * 
+ * Inserts a parsed email object into the database.
+ * 
+ * @param {Object} mail 
+ * @param {Function} callback 
+ */
+function insertMail (mail, callback) {
+	emailDb.insert({
+		data: {
+			recipients: mail.to.value,
+			sender: _.head(mail.from.value),
+			subject: mail.subject,
+			text: mail.text,
+			html: mail.html,
+			date_sent: mail.date,
+			messageId: mail.messageId
+		}
+	}, callback);
+}
