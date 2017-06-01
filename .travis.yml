@@ -1,6 +1,6 @@
 language: node_js
 addons:
-  postgresql: "9.6"
+  postgresql: "9.5"
 node_js:
   "8.0.0"
 notifications:
