@@ -20,6 +20,7 @@
 	},
 	"scripts": {
 		"lint": "./node_modules/.bin/eslint .",
-		"build": "docker build ."
+		"build": "docker build .",
+		"setup": "node ./script/create-db-schema.js"
 	}
 }
