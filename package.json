@@ -16,11 +16,13 @@
 	},
 	"devDependencies": {
 		"eslint": "^3.19.0",
+		"mocha": "^3.4.2",
 		"nodemailer": "^4.0.1"
 	},
 	"scripts": {
-		"lint": "./node_modules/.bin/eslint .",
 		"build": "docker build .",
-		"setup": "node ./script/create-db-schema.js"
+		"lint": "./node_modules/.bin/eslint .",
+		"setup": "node ./script/create-db-schema.js",
+		"test": "./node_modules/.bin/mocha ./test/**/*.js"
 	}
 }
