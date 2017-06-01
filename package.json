@@ -1,0 +1,13 @@
+{
+	"name": "temp-mail",
+	"version": "0.0.1",
+	"dependencies": {
+		"express": "^4.15.3",
+		"lodash": "^4.17.4",
+		"mailparser": "^2.0.5",
+		"smtp-server": "^3.0.1"
+	},
+	"devDependencies": {
+		"nodemailer": "^4.0.1"
+	}
+}
