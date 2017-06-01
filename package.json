@@ -8,6 +8,10 @@
 		"smtp-server": "^3.0.1"
 	},
 	"devDependencies": {
+		"eslint": "^3.19.0",
 		"nodemailer": "^4.0.1"
+	},
+	"scripts": {
+		"lint": "./node_modules/.bin/eslint ."
 	}
 }
