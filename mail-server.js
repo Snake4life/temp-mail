@@ -53,7 +53,7 @@ function insertMail (mail, callback) {
 			text: mail.text,
 			html: mail.html,
 			date_sent: mail.date,
-			messageId: mail.messageId
+			message_id: mail.messageId
 		}
 	}, callback);
 }

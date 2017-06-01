@@ -12,7 +12,7 @@ module.exports = function (schema) {
 			table.text('subject');
 			table.text('text');
 			table.text('html');
-			table.string('messageId');
+			table.string('message_id');
 			table.dateTime('date_sent');
 			table.dateTime('created_date');
 			table.dateTime('updated_date');
