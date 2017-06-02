@@ -8,7 +8,7 @@ mailServer.listen(config.mailServerPort, function (err) {
 });
 
 // Web Server
-var webServer = require('./web-server.js');
+var webServer = require('./web/server.js');
 webServer.listen(config.appPort, function (err) {
 	if (err) throw err;
 	console.log('Web Server listening on', config.appPort);

@@ -13,22 +13,31 @@
 	"license": "UNLICENSED",
 	"dependencies": {
 		"async": "^2.4.1",
+		"bootstrap": "^4.0.0-alpha.6",
 		"express": "^4.15.3",
+		"jquery": "^3.2.1",
 		"knex": "^0.13.0",
 		"lodash": "^4.17.4",
 		"mailparser": "^2.0.5",
 		"pg": "^6.2.3",
-		"smtp-server": "^3.0.1"
+		"smtp-server": "^3.0.1",
+		"tether": "^1.4.0"
 	},
 	"devDependencies": {
+		"css-loader": "^0.28.4",
 		"eslint": "^3.19.0",
 		"mocha": "^3.4.2",
-		"nodemailer": "^4.0.1"
+		"node-sass": "^4.5.3",
+		"nodemailer": "^4.0.1",
+		"sass-loader": "^6.0.5",
+		"style-loader": "^0.18.1",
+		"webpack": "^2.6.1"
 	},
 	"scripts": {
 		"build": "docker build .",
 		"lint": "./node_modules/.bin/eslint .",
 		"setup": "node ./script/create-db-schema.js",
+		"watch": "./node_modules/.bin/webpack --watch",
 		"test": "./node_modules/.bin/mocha ./test/**/*.js"
 	}
 }
