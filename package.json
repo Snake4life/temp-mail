@@ -6,6 +6,11 @@
 		"node": "8.0.0",
 		"npm": "5.0.0"
 	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/mikecote/temp-mail.git"
+	},
+	"license": "UNLICENSED",
 	"dependencies": {
 		"async": "^2.4.1",
 		"express": "^4.15.3",
