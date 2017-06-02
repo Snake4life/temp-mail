@@ -5,12 +5,12 @@ import About from './about.jsx';
 
 class NavbarComponent extends React.Component {
 	constructor(props) {
-    super(props);
+		super(props);
 		this.state = { activeTab: 'home' };
-    this.setMainComponent = props.setMainComponent;
+		this.setMainComponent = props.setMainComponent;
 		this.onHomeClick = this.onHomeClick.bind(this);
 		this.onAboutClick = this.onAboutClick.bind(this);
-  }
+	}
 
 	onHomeClick (e) {
 		this.setState({ activeTab: 'home' });
@@ -26,8 +26,8 @@ class NavbarComponent extends React.Component {
 		e.stopPropagation();
 	}
 
-  render() {
-    return (
+	render() {
+		return (
 			<nav className="navbar navbar-toggleable-md navbar-light bg-faded">
 				<button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span className="navbar-toggler-icon"></span>
@@ -45,8 +45,8 @@ class NavbarComponent extends React.Component {
 					</ul>
 				</div>
 			</nav>
-    );
-  }
+		);
+	}
 }
 
 export default NavbarComponent;
