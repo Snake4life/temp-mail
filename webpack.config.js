@@ -3,7 +3,7 @@ var webpack = require('webpack');
 
 module.exports = {
 	entry: {
-		app: './web/browser/app.js'
+		app: './web/browser/app.jsx'
 	},
 	output: {
 		path: path.join(__dirname, '.build'),
@@ -30,6 +30,10 @@ module.exports = {
 			{
 				test: /\.scss$/,
 				use: ['style-loader', 'css-loader', 'sass-loader']
+			},
+			{
+				test: /\.jsx$/,
+				use: ['babel-loader']
 			}
 		]
 	}
