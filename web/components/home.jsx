@@ -20,6 +20,10 @@ class Home extends React.Component {
 		});
 	}
 
+	resetEmails () {
+		this.setState({ emails: [] });
+	}
+
 	render () {
 		return (
 			<div className="container-fluid" style={topSpacing}>
@@ -27,7 +31,9 @@ class Home extends React.Component {
 					{this.state.emails.length === 0 &&
 						<EmailInputForm checkEmail={this.checkEmail.bind(this)} />	
 					}
-					<Emails emails={this.state.emails}/>
+					{this.state.emails.length > 0 &&
+						<Emails emails={this.state.emails} resetEmails={this.resetEmails.bind(this)} />
+					}
 				</div>
 			</div>
 		);
