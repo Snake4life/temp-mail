@@ -15,7 +15,6 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { MainComponent: Home };
-		this.setMainComponent = this.setMainComponent.bind(this);
 	}
 
 	setMainComponent (Component) {
@@ -25,7 +24,7 @@ class App extends React.Component {
 	render () {
 		return (
 			<div className="container-fluid">
-				<NavbarComponent setMainComponent={this.setMainComponent} />
+				<NavbarComponent setMainComponent={this.setMainComponent.bind(this)} />
 				<this.state.MainComponent />
 			</div>
 		);

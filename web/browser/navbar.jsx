@@ -7,21 +7,18 @@ class NavbarComponent extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { activeTab: 'home' };
-		this.setMainComponent = props.setMainComponent;
-		this.onHomeClick = this.onHomeClick.bind(this);
-		this.onAboutClick = this.onAboutClick.bind(this);
 	}
 
 	onHomeClick (e) {
 		this.setState({ activeTab: 'home' });
-		this.setMainComponent(Home);
+		this.props.setMainComponent(Home);
 		e.preventDefault();
 		e.stopPropagation();
 	}
 
 	onAboutClick (e) {
 		this.setState({ activeTab: 'about' });
-		this.setMainComponent(About);
+		this.props.setMainComponent(About);
 		e.preventDefault();
 		e.stopPropagation();
 	}
@@ -37,10 +34,10 @@ class NavbarComponent extends React.Component {
 				<div className="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul className="navbar-nav mr-auto">
 						<li className={"nav-item " + (this.state.activeTab === 'home' ? 'active' : '')}>
-							<a className="nav-link" onClick={this.onHomeClick} href="#">Home</a>
+							<a className="nav-link" onClick={this.onHomeClick.bind(this)} href="#">Home</a>
 						</li>
 						<li className={"nav-item " + (this.state.activeTab === 'about' ? 'active' : '')}>
-							<a className="nav-link" onClick={this.onAboutClick} href="#">About</a>
+							<a className="nav-link" onClick={this.onAboutClick.bind(this)} href="#">About</a>
 						</li>
 					</ul>
 				</div>
