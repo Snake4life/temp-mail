@@ -1,5 +1,7 @@
 const _ = require('lodash');
+const async = require('async');
 var emailDb = require('./db/email');
+var inboxDb = require('./db/inbox');
 const SMTPServer = require('smtp-server').SMTPServer;
 const simpleParser = require('mailparser').simpleParser;
 
@@ -45,15 +47,39 @@ function onData (stream, session, callback) {
  * @param {Function} callback 
  */
 function insertMail (mail, callback) {
-	emailDb.insert({
-		data: {
-			recipients: mail.to.value,
-			sender: _.head(mail.from.value),
-			subject: mail.subject,
-			text: mail.text,
-			html: mail.html,
-			date_sent: mail.date,
-			message_id: mail.messageId
+	async.waterfall([
+		function getOrCreateInboxRecord (callback) {
+			inboxDb.load({
+				q: {
+					email_address: _.head(mail.from.value)
+				}
+			}, function (err, inbox) {
+				if (err) {
+					return callback(err);
+				} else if (inbox) {
+					return callback(null, inbox);
+				} else {
+					inboxDb.insert({
+						data: {
+							email_address: _.head(mail.from.value)
+						}
+					}, callback);
+				}
+			});
+		},
+		function insertEmailRecord (inbox, callback) {
+			emailDb.insert({
+				data: {
+					inbox_id: inbox.id,
+					recipients: mail.to.value,
+					sender: _.head(mail.from.value),
+					subject: mail.subject,
+					text: mail.text,
+					html: mail.html,
+					date_sent: mail.date,
+					message_id: mail.messageId
+				}
+			}, callback);
 		}
-	}, callback);
+	], callback);
 }

@@ -7,6 +7,7 @@ module.exports = function (schema) {
 		.dropTableIfExists('email')
 		.createTable('email', function (table) {
 			table.increments('id');
+			table.integer('inbox_id');
 			table.specificType('sender', 'json');
 			table.specificType('recipients', 'json[]');
 			table.text('subject');
