@@ -14,6 +14,8 @@ app.get('/', function (req, res, next) {
 	});
 });
 
+app.use('/api', require('./api.js'));
+
 module.exports = app;
 
 var getPage = async.memoize(function (pageName, callback) {
