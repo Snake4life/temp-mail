@@ -47,12 +47,12 @@ function onData (stream, session, callback) {
  * @param {Function} callback 
  */
 function insertMail (mail, callback) {
-	var senderEmail = _.get(mail, 'from.value[0].address');
+	var recipientEmail = _.get(mail, 'to.value[0].address');
 	async.waterfall([
 		function getOrCreateInboxRecord (callback) {
 			inboxDb.load({
 				q: {
-					email_address: senderEmail
+					email_address: recipientEmail
 				}
 			}, function (err, inbox) {
 				if (err) {
@@ -62,7 +62,7 @@ function insertMail (mail, callback) {
 				} else {
 					inboxDb.insert({
 						data: {
-							email_address: senderEmail
+							email_address: recipientEmail
 						}
 					}, callback);
 				}
