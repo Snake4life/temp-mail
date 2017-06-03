@@ -2,7 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var async = require('async');
 var express = require('express');
-var compression = require('compression')
+var compression = require('compression');
 
 var app = express();
 app.use(compression());

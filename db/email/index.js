@@ -30,9 +30,7 @@ module.exports = {
 		});
 		knexion('email')
 			.insert(data)
-			.asCallback(function (err) {
-				if (err) return callback(err);
-				callback(null, data);
-			});
+			.returning('*')
+			.asCallback(callback);
 	}
 };
