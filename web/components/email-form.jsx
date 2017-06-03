@@ -1,15 +1,11 @@
 import React from 'react';
 
-const formStyle = {
-	marginTop: '50px'
-};
-
 class About extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			email: '',
-			domain: 'example.com'
+			domain: 'localhost.local'
 		};
 	}
 
@@ -25,7 +21,7 @@ class About extends React.Component {
 
 	render () {
 		return (
-			<form style={formStyle}>
+			<form>
 				<div className="form-group">
 					<div className="input-group">
 						<input type="email" className="form-control" id="email" placeholder="Email" value={this.state.email} onChange={this.onInputChange.bind(this)} />

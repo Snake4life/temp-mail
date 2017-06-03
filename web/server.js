@@ -7,7 +7,7 @@ var compression = require('compression');
 var app = express();
 app.use(compression());
 
-app.use('/', express.static(path.join(__dirname, '..', '.build')));
+app.use('/', express.static(path.join(__dirname, '.build')));
 
 app.get('/', function (req, res, next) {
 	getPage('index', function (err, content) {
