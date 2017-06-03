@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const async = require('async');
-var emailDb = require('./db/email');
-var inboxDb = require('./db/inbox');
+var emailDb = require('../db/email');
+var inboxDb = require('../db/inbox');
 const SMTPServer = require('smtp-server').SMTPServer;
 const simpleParser = require('mailparser').simpleParser;
 

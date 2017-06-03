@@ -6,7 +6,7 @@ describe('test.inbound-mail.js', function () {
 
 	const config = require('../config.js');
 	const nodemailer = require('nodemailer');
-	var mailServer = require('../mail-server.js');
+	var mailServer = require('../mail-server/server.js');
 
 	var transport = nodemailer.createTransport({
 		host: '127.0.0.1',
