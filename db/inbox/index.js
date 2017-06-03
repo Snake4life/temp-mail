@@ -7,7 +7,7 @@ module.exports = {
 		if (opts.q.id) {
 			where.id = opts.q.id;
 		} else if (opts.q.email_address) {
-			where.email_address = _.lowerCase(opts.q.email_address);
+			where.email_address = _.toLower(opts.q.email_address);
 		} else {
 			return callback(new Error('No vaoid opts.q provided'));
 		}
@@ -23,7 +23,7 @@ module.exports = {
 		var data = _.assign({}, opts.data, {
 			created_date: new Date(),
 			updated_date: new Date(),
-			email_address: _.lowerCase(opts.data.email_address)
+			email_address: _.toLower(opts.data.email_address)
 		});
 		knexion('inbox')
 			.insert(data)
