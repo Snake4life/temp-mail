@@ -44,7 +44,7 @@
 		"build": "docker build .",
 		"lint": "./node_modules/.bin/eslint .",
 		"setup": "node ./script/create-db-schema.js",
-		"watch": "./node_modules/.bin/webpack --watch",
+		"watch": "cd web && ../node_modules/.bin/webpack --watch",
 		"test": "npm run lint && ./node_modules/.bin/mocha ./test/**/*.js"
 	}
 }
