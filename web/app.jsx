@@ -1,14 +1,16 @@
+// Libraries
 require('jquery');
 require('tether');
 require('bootstrap');
-// Style
-require('./app.scss');
+
+// Styles
+require('bootstrap/scss/bootstrap.scss');
 
 import React from 'react';
 import {render} from 'react-dom';
 
-import Home from './home.jsx';
-import NavbarComponent from './navbar.jsx';
+import Home from './components/home.jsx';
+import NavbarComponent from './components/navbar.jsx';
 
 class App extends React.Component {
 

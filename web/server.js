@@ -17,5 +17,5 @@ app.get('/', function (req, res, next) {
 module.exports = app;
 
 var getPage = async.memoize(function (pageName, callback) {
-	fs.readFile(path.join(__dirname, 'pages', pageName + '.html'), 'utf8', callback);
+	fs.readFile(path.join(__dirname, pageName + '.html'), 'utf8', callback);
 });
